@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { PencilLine } from 'phosphor-react';
 import styles from './Sidebar.module.css';
 
 export function Sidebar() {
@@ -11,12 +12,14 @@ export function Sidebar() {
       />
 
       <div className={styles.profile}>
+        <img className={styles.avatar} src="https://avatars.githubusercontent.com/u/16305348?v=4" alt="Profile" />
         <strong>Marcelo Henriques</strong>
         <span>Web Developer</span>
       </div>
 
       <footer>
         <a href="#">
+          <PencilLine size={20} />
           Editar seu perfil
         </a>
       </footer>

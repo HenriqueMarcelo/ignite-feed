@@ -16,6 +16,29 @@
     flex-direction: column;
 }
 
+.profile strong {
+    margin-top: 1rem;
+    color: var(--gray-100);
+    line-height: 1.6;
+}
+
+.profile span {
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    line-height: 1.6;
+}
+
+.avatar {
+    box-sizing: content-box;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+    border: 4px solid var(--gray-800);
+    outline: 2px solid var(--green-500);
+
+    margin-top: calc(0px - 1.5rem - 6px);
+}
+
 .sidebar footer {
     border-top: 1px solid var(--gray-600);
     margin-top: 1.5rem;
@@ -31,13 +54,19 @@
     padding: 0 1.5rem;
     font-weight: bold;
     text-decoration: none;
+
     display: flex;
     justify-content: center;
     align-items: center;
     transition: .1s linear;
+    gap: 0.5rem;
 }
 
 .sidebar footer a:hover {
     background-color: var(--green-500);
-    color: var(--gray-800);
+    color: var(--white);
+}
+
+.sidebar footer a {
+
 }
