@@ -23,7 +23,6 @@
 }
 
 .sidebar footer a {
-    width: 100%;
     background: transparent;
     color: var(--green-500);
     border: 1px solid var(--green-500);
