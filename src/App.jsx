@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker/locale/pt_BR';
 import { Post } from './components/Post';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
@@ -6,38 +7,21 @@ import './global.css';
 
 import styles from './App.module.css';
 
-const posts = [
-  {
-    id: 1,
-    author: {
-      avatarUrl: 'https://avatars.dicebear.com/api/avataaars/aa.svg',
-      name: 'Marcelo Henrique',
-      role: 'Cantor Sertanejo',
-    },
-    content: [
-      { type: 'paragraph', content: 'Fala galeraa 😋' },
-      { type: 'paragraph', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.' },
-      { type: 'paragraph', content: 'In odio maxime, placeat repellendus iure aut et corrupti temporibus similique odit.' },
-      { type: 'link', content: 'marcelo.tv' },
-    ],
-    publishedAt: new Date('2022-11-11 14:03'),
+const posts = faker.datatype.array().map(() => ({
+  id: faker.datatype.uuid(),
+  author: {
+    avatarUrl: `https://avatars.dicebear.com/api/identicon/${faker.word.verb()}.svg`,
+    name: faker.name.fullName(),
+    role: faker.name.jobType(),
   },
-  {
-    id: 2,
-    author: {
-      avatarUrl: 'https://avatars.dicebear.com/api/avataaars/bb.svg',
-      name: 'João Silva',
-      role: 'Pintor',
-    },
-    content: [
-      { type: 'paragraph', content: 'Fala galeraa 😋' },
-      { type: 'paragraph', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.' },
-      { type: 'paragraph', content: 'In odio maxime, placeat repellendus iure aut et corrupti temporibus similique odit.' },
-      { type: 'link', content: 'marcelo.tv' },
-    ],
-    publishedAt: new Date('2022-11-11 10:00:00'),
-  },
-];
+  content: [
+    { type: 'paragraph', content: `${faker.lorem.sentence(2)} ${faker.internet.emoji()}` },
+    { type: 'paragraph', content: faker.lorem.sentence() },
+    { type: 'paragraph', content: faker.lorem.sentence() },
+    { type: 'link', content: faker.internet.url() },
+  ],
+  publishedAt: faker.date.recent(2),
+}));
 
 function App() {
   return (
