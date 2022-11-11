@@ -23,5 +23,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0,
     'jsx-a11y/alt-text': 0,
+    'no-restricted-globals': 1,
+    'no-unused-vars': 1,
   },
 };

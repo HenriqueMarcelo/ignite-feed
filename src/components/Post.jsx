@@ -1,12 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
+import { useState } from 'react';
+import { faker } from '@faker-js/faker/locale/pt_BR';
 import styles from './Post.module.css';
 
 import { Comment } from './Comment';
 import { Avatar } from './Avatar';
 
 export function Post({ author, publishedAt, content }) {
+  const [comments, setComments] = useState([
+    faker.lorem.sentence(),
+  ]);
+
+  const [newCommentText, setNewCommentText] = useState('');
+
   const publishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -20,13 +28,26 @@ export function Post({ author, publishedAt, content }) {
     addSuffix: true,
   });
 
+  function handleSubmit() {
+    event.preventDefault();
+    setComments([...comments, newCommentText]);
+    setNewCommentText('');
+  }
+
+  function handleNewCommentChange() {
+    const text = event.target.value;
+    setNewCommentText(text);
+  }
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
           <Avatar src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>{author.name}</strong>
+            <strong>
+              {author.name}
+            </strong>
             <span>{author.role}</span>
           </div>
         </div>
@@ -48,19 +69,23 @@ export function Post({ author, publishedAt, content }) {
         })}
       </div>
 
-      <form className={styles.commentForm}>
+      <form onSubmit={handleSubmit} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
-        <textarea placeholder="Deixe um comentário" />
+        <textarea
+          name="comment"
+          placeholder="Deixe um comentário"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+        />
         <footer>
           <button type="submit">Publicar</button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
-        <Comment />
-
+        {comments.map((comment) => (
+          <Comment content={comment} />
+        ))}
       </div>
     </article>
   );
