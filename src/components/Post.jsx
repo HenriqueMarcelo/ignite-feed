@@ -4,7 +4,8 @@ import styles from './Post.module.css';
 import { Comment } from './Comment';
 import { Avatar } from './Avatar';
 
-export function Post() {
+export function Post({ author, publishedAt, content }) {
+  console.log(author, publishedAt, content);
   return (
     <article className={styles.post}>
       <header>

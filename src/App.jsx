@@ -6,6 +6,39 @@ import './global.css';
 
 import styles from './App.module.css';
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://avatars.dicebear.com/api/avataaars/aa.svg',
+      name: 'Marcelo Henrique',
+      role: 'Cantor Sertanejo',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 😋' },
+      { type: 'paragraph', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.' },
+      { type: 'paragraph', content: 'In odio maxime, placeat repellendus iure aut et corrupti temporibus similique odit.' },
+      { type: 'link', content: 'marcelo.tv' },
+    ],
+    publishedAt: new Date('2022-11-11 14:03'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://avatars.dicebear.com/api/avataaars/bb.svg',
+      name: 'João Silva',
+      role: 'Pintor',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 😋' },
+      { type: 'paragraph', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.' },
+      { type: 'paragraph', content: 'In odio maxime, placeat repellendus iure aut et corrupti temporibus similique odit.' },
+      { type: 'link', content: 'marcelo.tv' },
+    ],
+    publishedAt: new Date('2022-11-11 10:00:00'),
+  },
+];
+
 function App() {
   return (
     <>
@@ -13,22 +46,14 @@ function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            name="Ricardo"
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, a quisquam consectetur ipsam labore et rerum, in doloremque officiis vel architecto eum! Laudantium reprehenderit dolores sequi, culpa fugiat quaerat facilis?"
-          />
-          <Post
-            name="Ricardo"
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, a quisquam consectetur ipsam labore et rerum, in doloremque officiis vel architecto eum! Laudantium reprehenderit dolores sequi, culpa fugiat quaerat facilis?"
-          />
-          <Post
-            name="Ricardo"
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, a quisquam consectetur ipsam labore et rerum, in doloremque officiis vel architecto eum! Laudantium reprehenderit dolores sequi, culpa fugiat quaerat facilis?"
-          />
-          <Post
-            name="Ricardo"
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, a quisquam consectetur ipsam labore et rerum, in doloremque officiis vel architecto eum! Laudantium reprehenderit dolores sequi, culpa fugiat quaerat facilis?"
-          />
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+          ))}
         </main>
       </div>
     </>
