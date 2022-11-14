@@ -12,7 +12,9 @@ export function Comment({ content, onDeleteComment }) {
   }
 
   function handleLikeComment() {
-    setLikeCount(likeCount + 1);
+    // Sempre que eu precisar atualizar um estado com base no estado anterior
+    // é para utilizar uma arrow function, pois o parâmetro dela é o valor atualizado
+    setLikeCount((state) => state + 1);
   }
 
   return (
