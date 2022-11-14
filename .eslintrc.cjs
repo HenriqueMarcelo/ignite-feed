@@ -25,5 +25,6 @@ module.exports = {
     'jsx-a11y/alt-text': 0,
     'no-restricted-globals': 1,
     'no-unused-vars': 1,
+    'react/jsx-no-bind': 0,
   },
 };
