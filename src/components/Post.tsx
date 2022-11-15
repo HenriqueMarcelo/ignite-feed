@@ -1,14 +1,31 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import styles from './Post.module.css';
 
 import { Comment } from './Comment';
 import { Avatar } from './Avatar';
 
-export function Post({ author, publishedAt, content }) {
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string;
+}
+
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string;
+}
+
+export interface PostProps {
+  author: Author;
+  publishedAt: Date;
+  content: Content[];
+}
+
+export function Post({ author, publishedAt, content }: PostProps) {
   const [comments, setComments] = useState([
     faker.lorem.sentence(),
   ]);
@@ -28,23 +45,23 @@ export function Post({ author, publishedAt, content }) {
     addSuffix: true,
   });
 
-  function handleSubmit() {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault();
     setComments([...comments, newCommentText]);
     setNewCommentText('');
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     const text = event.target.value;
     event.target.setCustomValidity('');
     setNewCommentText(text);
   }
 
-  function handleNewCommentInvalid() {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('Esse campo é obrigatório!');
   }
 
-  function deleteComment(commentToDelete) {
+  function deleteComment(commentToDelete: string) {
     const commentsWithoutDeletedOne = comments.filter((comment) => comment !== commentToDelete);
     setComments(commentsWithoutDeletedOne);
   }
@@ -81,7 +98,7 @@ export function Post({ author, publishedAt, content }) {
         })}
       </div>
 
-      <form onSubmit={handleSubmit} className={styles.commentForm}>
+      <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
         <textarea
           name="comment"

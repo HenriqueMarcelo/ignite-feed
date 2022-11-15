@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
-import { Post } from './components/Post';
+import { Post, PostProps } from './components/Post';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 
@@ -7,7 +7,11 @@ import './global.css';
 
 import styles from './App.module.css';
 
-const posts = faker.datatype.array().map(() => ({
+interface Post extends PostProps {
+  id: string;
+}
+
+const posts: Post[] = faker.datatype.array().map(() => ({
   id: faker.datatype.uuid(),
   author: {
     avatarUrl: `https://avatars.dicebear.com/api/identicon/${faker.word.verb()}.svg`,
