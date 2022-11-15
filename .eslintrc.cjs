@@ -31,5 +31,7 @@ module.exports = {
     'jsx-a11y/alt-text': 0,
     'no-restricted-globals': 1,
     'no-unused-vars': 1,
+
+    'react/require-default-props': 0,
   }
 }

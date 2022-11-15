@@ -7,11 +7,11 @@ import './global.css';
 
 import styles from './App.module.css';
 
-interface Post extends PostProps {
+interface PostPropsWithID extends PostProps {
   id: string;
 }
 
-const posts: Post[] = faker.datatype.array().map(() => ({
+const posts: PostPropsWithID[] = faker.datatype.array().map(() => ({
   id: faker.datatype.uuid(),
   author: {
     avatarUrl: `https://avatars.dicebear.com/api/identicon/${faker.word.verb()}.svg`,

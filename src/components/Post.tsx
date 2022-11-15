@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
+import {
+  ChangeEvent, FormEvent, InvalidEvent, useState,
+} from 'react';
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import styles from './Post.module.css';
 
