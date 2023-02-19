@@ -43,5 +43,3 @@ To run the Ignite Feed on your machine, follow these steps:
 The Ignite Feed was a very interesting project for learning React, Typescript and date manipulation. I hope it can be useful for other people who are starting in the world of web development.
 
 If you have any questions or suggestions, please feel free to contact me.
-
-Translated with www.DeepL.com/Translator (free version)
