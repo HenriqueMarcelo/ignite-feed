@@ -14,7 +14,7 @@ interface PostPropsWithID extends PostProps {
 const posts: PostPropsWithID[] = faker.datatype.array().map(() => ({
   id: faker.datatype.uuid(),
   author: {
-    avatarUrl: `https://avatars.dicebear.com/api/identicon/${faker.word.verb()}.svg`,
+    avatarUrl: `https://i.pravatar.cc/150?u=${faker.word.verb()}`,
     name: faker.name.fullName(),
     role: faker.name.jobType(),
   },
